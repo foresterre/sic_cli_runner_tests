@@ -1,7 +1,7 @@
 ---
 compat:
   - tool: sic_cli_runner_proto
-  - version: 0.2.0
+  - version: 0.2.1
 
 before:
   # install sic
@@ -21,31 +21,31 @@ runner_tests:
   # .pgm & graymap
   -
     - expect: !!clirunner/exitcode '0'
-    - case: 'sic resources/bwlines.png target/out.pgm --pnm-encoding-graymap-ascii'
+    - for: 'sic resources/bwlines.png target/out.pgm --pnm-encoding-graymap-ascii'
   -
     - expect: !!clirunner/exitcode '0'
-    - case: 'sic resources/bwlines.png target/out.pgm --pnm-encoding-graymap-ascii'
+    - for: 'sic resources/bwlines.png target/out.pgm --pnm-encoding-graymap-ascii'
 
   # .ppm & pixmap
   -
     - expect: !!clirunner/exitcode '0'
-    - case: 'sic resources/rainbow_8x6.bmp target/out.ppm --pnm-encoding-pixmap-ascii'
+    - for: 'sic resources/rainbow_8x6.bmp target/out.ppm --pnm-encoding-pixmap-ascii'
 
   -
     - expect: !!clirunner/exitcode '0'
-    - case: 'sic resources/rainbow_8x6.bmp target/out.ppm --pnm-encoding-pixmap-binary'
+    - for: 'sic resources/rainbow_8x6.bmp target/out.ppm --pnm-encoding-pixmap-binary'
 
   # .pam & arbitrarymap
   -
     - expect: !!clirunner/exitcode '0'
-    - case: 'sic resources/bwlines.png target/out.pam --pnm-encoding-arbitrarymap'
+    - for: 'sic resources/bwlines.png target/out.pam --pnm-encoding-arbitrarymap'
 
   # other
   -
     - expect: !!clirunner/exitcode '0'
-    - case: 'sic resources/bwlines.png target/out.pnm --pnm-encoding-pixmap-binary'
+    - for: 'sic resources/bwlines.png target/out.pnm --pnm-encoding-pixmap-binary'
 
   -
     # --pnm-encoding-pixmap-binary not expected for .pgm (graymap) extension
     - expect_not: !!clirunner/exitcode '0'
-    - case: 'sic resources/bwlines.png target/out.pgm --pnm-encoding-pixmap-binary'
+    - for: 'sic resources/bwlines.png target/out.pgm --pnm-encoding-pixmap-binary'
